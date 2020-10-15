@@ -21,7 +21,6 @@
     "compression": "^1.7.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-recaptcha": "^5.0.2",
     "multer": "^1.4.2",
     "nodemailer": "^6.4.14",
     "referrer-policy": "^1.2.0",

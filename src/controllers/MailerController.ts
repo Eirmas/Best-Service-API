@@ -11,7 +11,14 @@ export class MailerController {
 
     @Post('/mail')
     post(@Body() mail: Mail) {
-        this.mailerService.send(mail);
+        try {
+            // TODO: Verify Recpatha somehow...
+            // new (RecpathaService()).verify();
+        } catch (e /*: ReCapthaVerifyException */) {
+            return { status: false, msg: 'invalid_validation' };
+        }
+
+        this.mailerService.send(mail); // TODO: <- Needs error handling.
         return { status: true };
     }
 }
