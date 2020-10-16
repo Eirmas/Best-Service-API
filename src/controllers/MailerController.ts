@@ -1,6 +1,8 @@
 import { JsonController, Body, Post } from 'routing-controllers';
 import MailerService from '../services/MailerService';
-import Mail from '../domain/Mail';
+import RecpathaService from '../services/ReCaptchaService';
+import Mailer from '../domain/Mailer';
+import ReCaptchaVerifyException from '../exceptions/ReCaptchaVerifyException';
 
 @JsonController()
 export class MailerController {
@@ -10,15 +12,14 @@ export class MailerController {
     }
 
     @Post('/mail')
-    post(@Body() mail: Mail) {
+    async post(@Body() body: Mailer) {
         try {
-            // TODO: Verify Recpatha somehow...
-            // new (RecpathaService()).verify();
-        } catch (e /*: ReCapthaVerifyException */) {
-            return { status: false, msg: 'invalid_validation' };
+            await new RecpathaService(body.recaptcha.token).verify();
+            this.mailerService.send(body.mail);
+        } catch (e: any) {
+            return { status: e.status, msg: e.message };
         }
 
-        this.mailerService.send(mail); // TODO: <- Needs error handling.
         return { status: true };
     }
 }
