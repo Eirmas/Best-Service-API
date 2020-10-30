@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as dotenv from "dotenv";
+import * as dotenv from 'dotenv';
 import ReCaptchaVerifyException from '../exceptions/ReCaptchaVerifyException';
 
 dotenv.config();
@@ -21,11 +21,11 @@ export default class RecaptchaService {
         })
             .then((response) => {
                 if (!(response.data && response.data.success)) {
-                    throw new ReCaptchaVerifyException(false, 'no-recaptcha-verification')
+                    throw new ReCaptchaVerifyException(false, 'no-recaptcha-verification');
                 }
             })
             .catch((err) => {
-                throw new ReCaptchaVerifyException(false, err.message || err)
-            })
+                throw new ReCaptchaVerifyException(false, err.message || err);
+            });
     }
 }

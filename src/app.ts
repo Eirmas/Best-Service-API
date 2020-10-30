@@ -2,7 +2,7 @@ import compression from 'compression';
 import http from 'http';
 import 'reflect-metadata';
 import { createExpressServer } from 'routing-controllers';
-import { MailerController } from './controllers/MailerController'
+import { MailerController } from './controllers/MailerController';
 
 // Add here your controllers
 const controllers: Array<any> = [MailerController];

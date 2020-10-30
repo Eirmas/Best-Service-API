@@ -15,10 +15,13 @@ export class MailerController {
         try {
             await new RecpathaService(body.recaptcha.token).verify();
             this.mailerService.send(body.mail);
-        } catch (e: any) {
+        } catch (e) {
             return { status: false, msg: e.message };
         }
 
-        return { status: true };
+        return {
+            status: true,
+            msg: 'OK'
+        };
     }
 }

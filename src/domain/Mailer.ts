@@ -1,5 +1,5 @@
-import Recaptcha from "./ReCaptcha";
-import Mail from "./Mail";
+import Recaptcha from './ReCaptcha';
+import Mail from './Mail';
 
 export default class Mailer {
     public readonly mail: Mail;
