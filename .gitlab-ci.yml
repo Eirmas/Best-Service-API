@@ -48,11 +48,9 @@ Production:
        cd ~/domains/api.studieporten.com/;
        rm -rf temp && mkdir temp;
        tar zxf artifact.tar.gz -C temp;
-       rm -f artifact.tar.gz;
-       mv temp/{temp,package.json} .;
-       rm -rf node_modules;
-       mv temp/node_modules/* ./node_modules/;
-       rm -rf temp/;
+       rm -rf artifact.tar.gz node_modules dist package.json;
+       mv temp/* .;
+       rm -rf temp;
        touch tmp/restart.txt;
      "
   #when: manual
