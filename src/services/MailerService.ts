@@ -33,7 +33,7 @@ export default class MailerService {
                 console.log('Error: ' + error, 'Info: ' + JSON.stringify(info))
                 if (error || !info) {
                     throw new MailerException(false, 'error-sending-mail');
-                } else if (!(info.envelope?.from === process.env.MAIL_FROM)) {
+                } else if (info.envelope.from === "") {
                     throw new MailerException(false, 'error-receiving-mail');
                 }
             });
