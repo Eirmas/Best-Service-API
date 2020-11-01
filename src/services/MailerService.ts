@@ -17,7 +17,9 @@ export default class MailerService {
                 user: process.env.MAIL_USER,
                 pass: process.env.MAIL_PASS
             },
-            tls: { 
+            tls: {
+                secure: false,
+                ignoreTLS: true,
                 rejectUnauthorized: false 
             }
         });
