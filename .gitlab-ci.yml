@@ -29,7 +29,7 @@ build:
     - mv /tmp/yarn-cache ./.yarn-cache
     
 
-.Production:
+Production:
   image: alpine
   stage: deploy
   environment:
