@@ -8,6 +8,7 @@
   "scripts": {
     "serve": "node dist/app.js",
     "start": "yarn run serve",
+    "build": "yarn run build-ts",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
     "watch-node": "nodemon --watch views dist/app.js",
