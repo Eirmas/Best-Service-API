@@ -51,7 +51,7 @@ Production:
        rm -f artifact.tar.gz;
      "
   #when: manual
-  only:
-   - master
+  #only:
+  # - master
   dependencies:
-    - Build
+    - build
