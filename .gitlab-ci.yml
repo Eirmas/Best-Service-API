@@ -23,7 +23,7 @@ build:
     - yarn install
     - yarn build
     - rm -rf src .git yarn.lock tsconfig.json .eslintrc .gitlab-ci.yml .gitignore
-    - tar --exclude='./yarn-cache/' -czf /tmp/artifact.tar.gz .
+    - tar --exclude='./.yarn-cache/' -czf /tmp/artifact.tar.gz .
     - mv /tmp/artifact.tar.gz .
     
 
