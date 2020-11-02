@@ -27,14 +27,13 @@ build:
     - tar -czf /tmp/artifact.tar.gz .
     - mv /tmp/artifact.tar.gz .
     - mv /tmp/yarn-cache ./.yarn-cache
-    
 
 Production:
   image: alpine
   stage: deploy
   environment:
     name: production
-    url: https://api.studieporten.com
+    url: https://api.best-service.no
   before_script:
    - apk add openssh-client
    - eval $(ssh-agent -s)
@@ -42,10 +41,10 @@ Production:
    - mkdir -p ~/.ssh
    - chmod 700 ~/.ssh
   script:
-   - scp -o StrictHostKeyChecking=no artifact.tar.gz studiepo@webhost.ironlions.fi:~/domains/api.studieporten.com/
+   - scp -o StrictHostKeyChecking=no artifact.tar.gz bestservice@webhost.ironlions.fi:~/domains/api.best-service.no/
    - >
-     ssh -o StrictHostKeyChecking=no studiepo@webhost.ironlions.fi "
-       cd ~/domains/api.studieporten.com/;
+     ssh -o StrictHostKeyChecking=no bestservice@webhost.ironlions.fi "
+       cd ~/domains/api.best-service.no/;
        rm -rf temp && mkdir temp;
        tar zxf artifact.tar.gz -C temp;
        rm -rf artifact.tar.gz node_modules dist package.json;
