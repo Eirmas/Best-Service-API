@@ -22,6 +22,8 @@ build:
   script:
     - yarn install
     - yarn build
+    - rm -rf node_modules
+    - yarn install --production
     - rm -rf src .git yarn.lock tsconfig.json .eslintrc .gitlab-ci.yml .gitignore
     - mv .yarn-cache /tmp/yarn-cache
     - tar -czf /tmp/artifact.tar.gz .
