@@ -30,7 +30,6 @@ export default class MailerService {
             };
             // eslint-disable-next-line
             this.mailer.sendMail(mailOptions, (error: any, info: any) => {
-                console.log('Error: ' + error, 'Info: ' + JSON.stringify(info))
                 if (error || !info) {
                     throw new MailerException(false, 'error-sending-mail');
                 } else if (info.envelope.from === "") {
